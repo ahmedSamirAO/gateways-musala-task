@@ -92,8 +92,8 @@ const GatewaysTable = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {gateways.map((row, rIdx) => (
-                <TableRow key={"user_" + rIdx}>
+              {gateways.map((row) => (
+                <TableRow key={row.serialNumber}>
                   <TableCell className="data-text" component="th" scope="row">
                     {row.serialNumber}
                   </TableCell>

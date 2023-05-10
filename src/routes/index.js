@@ -3,6 +3,7 @@ import async from "../components/Async";
 
 const Gateway = async(() => import("../pages/Gateway"));
 const CreateGateway = async(() => import("../pages/CreateGateway"));
+const GatewayDetails = async(() => import("../pages/GatewayDetails"));
 
 const gatewayRoute = {
   name: "gateway",
@@ -16,4 +17,14 @@ const createGatewayRoute = {
   component: CreateGateway,
 };
 
-export const homeRoutes = [gatewayRoute, createGatewayRoute];
+const viewGatewayDetailsRoute = {
+  name: "gatewayDetails",
+  path: "/gateway/:id",
+  component: GatewayDetails,
+};
+
+export const homeRoutes = [
+  viewGatewayDetailsRoute,
+  gatewayRoute,
+  createGatewayRoute,
+];

@@ -20,7 +20,7 @@ const MainContent = styled(Paper)`
   }
 `;
 
-const Home = () => {
+const Gateway = () => {
   const dispatch = useDispatch();
   return (
     <MainContent>
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Gateway;

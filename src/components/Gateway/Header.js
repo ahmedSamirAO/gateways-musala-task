@@ -16,7 +16,7 @@ const HeadingGrid = styled(Grid)`
   background-color: ${(props) => props.theme.palette.grey.inputBg};
 `;
 
-function UserList() {
+function GatewayHeader() {
   const history = useHistory();
 
   const openCreatePage = () => {
@@ -50,4 +50,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default GatewayHeader;

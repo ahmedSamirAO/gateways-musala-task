@@ -38,7 +38,7 @@ const CardHeader = styled(MuiCardHeader)`
   }
 `;
 
-const Home = () => {
+const CreateGateway = () => {
   const dispatch = useDispatch();
   return (
     <React.Fragment>
@@ -157,4 +157,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default CreateGateway;

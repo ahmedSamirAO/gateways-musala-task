@@ -34,7 +34,6 @@ const defaultVariant = {
     },
     background: {
       default: "#f6f6f7",
-      "blue-linear-gradient": "linear-gradient(to top, #141e37, #0a1428)",
       paper: "#FFF",
     },
     offWhite: {

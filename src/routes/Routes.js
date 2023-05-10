@@ -1,6 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import { homeRoutes } from "./index";
+import Default from "../layouts/default";
 
 const Routes = () => (
   <Router>
@@ -10,9 +16,15 @@ const Routes = () => (
           key={route.name}
           path={route.path}
           exact
-          component={route.component}
+          render={(props) => (
+            <Default>
+              <route.component {...props} />
+            </Default>
+          )}
         />
       ))}
+
+      <Redirect exact to="/gateway" />
     </Switch>
   </Router>
 );

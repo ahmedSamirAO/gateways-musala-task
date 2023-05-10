@@ -6,3 +6,8 @@ export const CommonActions = {
 export const ThemeActions = {
   THEME_SET: "THEME_SET",
 };
+
+export const GatewayActions = {
+  SAVE_GATEWAYS: "[GATEWAY] SAVE_GATEWAYS",
+  ADD_GATEWAY: "[GATEWAY] ADD_GATEWAY",
+};

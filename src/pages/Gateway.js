@@ -1,7 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Grid, Paper } from "@material-ui/core";
-import { useDispatch } from "react-redux";
 import styled from "styled-components/macro";
 
 import Header from "../components/Gateway/Header";
@@ -21,7 +20,6 @@ const MainContent = styled(Paper)`
 `;
 
 const Gateway = () => {
-  const dispatch = useDispatch();
   return (
     <MainContent>
       <Helmet title="Gateway" />

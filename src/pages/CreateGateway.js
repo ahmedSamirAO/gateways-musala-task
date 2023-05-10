@@ -16,6 +16,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import TextInput from "../components/TextInput";
+import { AddGateway } from "../redux/actions";
+import { useHistory } from "react-router-dom";
 
 const StyledCard = styled(MuiCard)(spacing);
 
@@ -40,6 +42,8 @@ const CardHeader = styled(MuiCardHeader)`
 
 const CreateGateway = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   return (
     <React.Fragment>
       <Helmet title="Users" />
@@ -51,26 +55,17 @@ const CreateGateway = () => {
             <CardContent>
               <Formik
                 initialValues={{
-                  userName: "",
-                  userEmail: "",
-                  newPassword: "",
-                  confirmPassword: "",
+                  name: "",
+                  IPv4: "",
                 }}
                 validationSchema={Yup.object().shape({
-                  userName: Yup.string().min(3).required("Name is required"),
-                  userEmail: Yup.string().email().required("Email is required"),
-                  newPassword: Yup.string()
-                    .required("Password is required")
+                  name: Yup.string().min(3).required("Name is required"),
+                  IPv4: Yup.string()
+                    .required("IPv4 is required")
                     .matches(
-                      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$/,
-                      "Password should contains at least one lowercase letter, uppercase letter, number, and special character"
+                      "(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])",
+                      "IPv4 not valid"
                     ),
-                  confirmPassword: Yup.string()
-                    .oneOf(
-                      [Yup.ref("newPassword"), null],
-                      "Passwords must match"
-                    )
-                    .required("new password is required"),
                 })}
                 onSubmit={async (
                   values,
@@ -78,6 +73,13 @@ const CreateGateway = () => {
                 ) => {
                   try {
                     // TODO:dispatch action to update user profile
+                    dispatch(
+                      AddGateway({
+                        name: values.name,
+                        IPv4: values.IPv4,
+                      })
+                    );
+                    history.push("/gateways");
                     resetForm();
                   } catch (error) {
                     const message = error.message || "Something went wrong";
@@ -102,10 +104,10 @@ const CreateGateway = () => {
                       <Grid item xs={12} lg={4}>
                         <FormControl fullWidth variant="outlined">
                           <TextInput
-                            type="password"
-                            name="newPassword"
-                            label="New Password"
-                            value={values.newPassword}
+                            type="text"
+                            name="name"
+                            label="Name"
+                            value={values.name}
                             errors={errors}
                             touched={touched}
                             onBlur={handleBlur}
@@ -118,10 +120,10 @@ const CreateGateway = () => {
                       <Grid item xs={12} lg={4}>
                         <FormControl fullWidth variant="outlined">
                           <TextInput
-                            type="password"
-                            name="confirmPassword"
-                            label="Confirm Password"
-                            value={values.confirmPassword}
+                            type="text"
+                            name="IPv4"
+                            label="IPv4"
+                            value={values.IPv4}
                             errors={errors}
                             touched={touched}
                             onBlur={handleBlur}
@@ -141,7 +143,7 @@ const CreateGateway = () => {
                             fullWidth
                             size="large"
                           >
-                            Change Password
+                            Add Gateway
                           </Button>
                         </Grid>
                       </Grid>

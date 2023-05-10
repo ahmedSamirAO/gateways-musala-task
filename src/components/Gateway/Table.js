@@ -72,8 +72,10 @@ const GatewaysTable = () => {
   }, [dispatch, rowsPerPage, page]);
 
   useEffect(() => {
-    dispatch(GetGateways());
-  }, [dispatch]);
+    if (!gateways.length) {
+      dispatch(GetGateways());
+    }
+  }, [dispatch, gateways]);
 
   return (
     <Card mb={6} className="table-container">

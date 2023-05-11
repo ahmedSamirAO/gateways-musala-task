@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components/macro";
@@ -11,7 +11,6 @@ import {
   TableCell as MuiTableCell,
   TableHead,
   TableRow as MuiTableRow,
-  TablePagination as MuiTablePagination,
   IconButton,
 } from "@material-ui/core";
 import { spacing } from "@material-ui/system";
@@ -41,35 +40,15 @@ const TableCell = styled(MuiTableCell)`
   }
 `;
 
-const TablePagination = styled(MuiTablePagination)`
-  background-color: ${(props) => props.theme.palette.grey.inputBg};
-`;
-
 const GatewaysTable = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const gateways = useSelector(({ gateways }) => gateways.gateways);
 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const openGatewayDetailsPage = (id) => {
     history.push(`/gateway/${id}`);
   };
-
-  useEffect(() => {
-    // dispatch(ProjectActions.fetchUsersData(rowsPerPage, page, filter, sort));
-  }, [dispatch, rowsPerPage, page]);
 
   useEffect(() => {
     if (!gateways.length) {
@@ -120,6 +99,8 @@ const GatewaysTable = () => {
             </TableBody>
           </Table>
         </TableWrapper>
+        {/*
+        // should add pagination when use the API
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
@@ -129,6 +110,7 @@ const GatewaysTable = () => {
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
+        */}
       </Paper>
     </Card>
   );

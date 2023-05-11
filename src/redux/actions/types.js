@@ -10,4 +10,6 @@ export const ThemeActions = {
 export const GatewayActions = {
   SAVE_GATEWAYS: "[GATEWAY] SAVE_GATEWAYS",
   ADD_GATEWAY: "[GATEWAY] ADD_GATEWAY",
+  ADD_DEVICE: "[GATEWAY] ADD_DEVICE",
+  REMOVE_DEVICE: "[GATEWAY] REMOVE_DEVICE",
 };

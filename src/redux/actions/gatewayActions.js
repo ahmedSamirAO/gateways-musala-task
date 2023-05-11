@@ -48,6 +48,18 @@ export const AddGateway = (gateway) => {
   };
 };
 
+export const AddDevice = (gatewaySSN, device) => {
+  return async (dispatch) => {
+    dispatch(saveDevice(gatewaySSN, device));
+  };
+};
+
+export const DeleteDevice = (gatewaySSN, uid) => {
+  return async (dispatch) => {
+    dispatch(removeDevice(gatewaySSN, uid));
+  };
+};
+
 export const saveGateways = (gateways) => ({
   type: GatewayActions.SAVE_GATEWAYS,
   payload: gateways,
@@ -56,4 +68,14 @@ export const saveGateways = (gateways) => ({
 export const saveGateway = (gateway) => ({
   type: GatewayActions.ADD_GATEWAY,
   payload: gateway,
+});
+
+export const saveDevice = (gatewaySSN, device) => ({
+  type: GatewayActions.ADD_DEVICE,
+  payload: { gatewaySSN, device },
+});
+
+export const removeDevice = (gatewaySSN, uid) => ({
+  type: GatewayActions.REMOVE_DEVICE,
+  payload: { gatewaySSN, uid },
 });

@@ -16,7 +16,7 @@ const HeadingGrid = styled(Grid)`
   background-color: ${(props) => props.theme.palette.grey.inputBg};
 `;
 
-function GatewayDetailsHeader() {
+function GatewayDetailsHeader({ gateway }) {
   const history = useHistory();
 
   const openCreatePage = () => {
@@ -43,6 +43,7 @@ function GatewayDetailsHeader() {
         my={2}
         py={3}
         onClick={openCreatePage}
+        disabled={gateway?.devices?.length >= 10}
       >
         CREATE
       </Button>

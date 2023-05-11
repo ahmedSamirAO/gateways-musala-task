@@ -72,7 +72,6 @@ const CreateGateway = () => {
                   { setErrors, setStatus, setSubmitting, resetForm }
                 ) => {
                   try {
-                    // TODO:dispatch action to update user profile
                     dispatch(
                       AddGateway({
                         name: values.name,

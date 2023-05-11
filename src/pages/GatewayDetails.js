@@ -50,21 +50,24 @@ const GatewayDetails = () => {
     <MainContent>
       <Helmet title="Gateway" />
 
-      <Header />
+      {gateway && (
+        <React.Fragment>
+          <Header gateway={gateway} />
 
-      <Grid container spacing={6}>
-        {gateway && (
-          <React.Fragment>
+          <Grid container spacing={6}>
             <Grid item xs={12} lg={12}>
               <Details gateway={gateway} />
             </Grid>
 
             <Grid item xs={12} lg={12}>
-              <Table devices={gateway.devices} />
+              <Table
+                devices={gateway.devices}
+                gatewaySSN={gateway.serialNumber}
+              />
             </Grid>
-          </React.Fragment>
-        )}
-      </Grid>
+          </Grid>
+        </React.Fragment>
+      )}
     </MainContent>
   );
 };

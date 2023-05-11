@@ -20,7 +20,7 @@ function GatewayDetailsHeader({ gateway }) {
   const history = useHistory();
 
   const openCreatePage = () => {
-    history.push("/create-device");
+    history.push(`/gateway/${gateway.serialNumber}/create-device`);
   };
 
   return (

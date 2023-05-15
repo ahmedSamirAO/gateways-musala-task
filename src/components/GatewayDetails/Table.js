@@ -68,10 +68,10 @@ const GatewayDevicesTable = ({ devices = [], gatewaySSN }) => {
             <TableBody>
               {devices.map((row) => (
                 <TableRow key={row.uid}>
-                  <TableCell className="data-text" component="th" scope="row">
+                  <TableCell className="data-text" scope="row">
                     {row.uid}
                   </TableCell>
-                  <TableCell className="data-text" component="th" scope="row">
+                  <TableCell className="data-text" scope="row">
                     {row.vendor}
                   </TableCell>
                   <TableCell className="data-text">

@@ -64,16 +64,16 @@ const GatewaysTable = () => {
             <TableHead>
               <TableRow>
                 <TableCell>Serial Number</TableCell>
-                <TableCell>name</TableCell>
+                <TableCell>Name</TableCell>
                 <TableCell>IPv4</TableCell>
-                <TableCell>devicesNumber</TableCell>
+                <TableCell>Devices Number</TableCell>
                 <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {gateways.map((row) => (
                 <TableRow key={row.serialNumber}>
-                  <TableCell className="data-text" component="th" scope="row">
+                  <TableCell className="data-text" scope="row">
                     {row.serialNumber}
                   </TableCell>
                   <TableCell className="data-text">{row.name}</TableCell>

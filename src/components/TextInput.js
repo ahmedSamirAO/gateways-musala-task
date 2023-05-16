@@ -53,6 +53,7 @@ const TextInput = forwardRef(
     <StyledTextField
       placeholder={placeholder}
       type={type}
+      id={name}
       name={name}
       label={label}
       value={value}

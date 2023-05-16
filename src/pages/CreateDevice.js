@@ -11,6 +11,7 @@ import {
   Grid,
   Select,
   MenuItem,
+  Typography,
 } from "@material-ui/core";
 
 import { spacing } from "@material-ui/system";
@@ -118,8 +119,11 @@ const CreateDevice = () => {
 
                       <Grid item xs={12} lg={4}>
                         <FormControl fullWidth>
+                          <Typography variant="caption">Status</Typography>
                           <Select
                             name="status"
+                            id="status"
+                            label="Status"
                             value={values.status}
                             onBlur={handleBlur}
                             onChange={handleChange}

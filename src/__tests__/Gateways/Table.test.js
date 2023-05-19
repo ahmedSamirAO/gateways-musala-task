@@ -61,4 +61,23 @@ describe("Gateway Table render", () => {
       expect(history.location.pathname).toBe("/gateway/1683758501346");
     });
   });
+
+  test("check gateway table rows number", async () => {
+    const history = createMemoryHistory();
+
+    render(
+      <AppWrapper>
+        <Router history={history}>
+          <Table />
+        </Router>
+      </AppWrapper>
+    );
+
+    await waitFor(async () => {
+      const tableCells = screen.getAllByRole("cell");
+      const rowsNumber = tableCells.length / 5;
+
+      expect(rowsNumber).toBe(2);
+    });
+  });
 });

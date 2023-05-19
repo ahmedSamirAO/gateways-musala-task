@@ -12,6 +12,7 @@ import createTheme from "../theme";
 import store from "../redux/store/index";
 import { HelmetProvider } from "react-helmet-async";
 import { act } from "react-dom/test-utils";
+import AppWrapper from "../components/AppWrapper";
 
 describe("CreateDevice tests", () => {
   test("renders CreateDevice", () => {
@@ -45,15 +46,11 @@ describe("CreateDevice tests", () => {
     history.push("/gateway/1683758501346/create-device");
 
     render(
-      <Provider store={store}>
-        <HelmetProvider>
-          <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-            <Router history={history}>
-              <CreateDevice />
-            </Router>
-          </ThemeProvider>
-        </HelmetProvider>
-      </Provider>
+      <AppWrapper>
+        <Router history={history}>
+          <CreateDevice />
+        </Router>
+      </AppWrapper>
     );
 
     const vendorField = screen.getByRole("textbox", { name: "Vendor" });

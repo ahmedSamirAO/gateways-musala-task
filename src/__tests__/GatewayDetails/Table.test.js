@@ -7,13 +7,9 @@ import {
   within,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
-import { Provider } from "react-redux";
 
 import Table from "../../components/GatewayDetails/Table";
-import { THEMES } from "../../constants";
-import createTheme from "../../theme";
-import store from "../../redux/store/index";
+import AppWrapper from "../../components/AppWrapper";
 
 describe("Gateway Details Table render", () => {
   test("renders Gateway Details Table", async () => {
@@ -38,11 +34,9 @@ describe("Gateway Details Table render", () => {
     };
 
     render(
-      <Provider store={store}>
-        <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-          <Table devices={gateway.devices} gatewaySSN={gateway.serialNumber} />
-        </ThemeProvider>
-      </Provider>
+      <AppWrapper>
+        <Table devices={gateway.devices} gatewaySSN={gateway.serialNumber} />
+      </AppWrapper>
     );
 
     const UIDCell = screen.getByText("UID");

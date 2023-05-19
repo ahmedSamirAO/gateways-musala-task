@@ -1,20 +1,18 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
-import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 
 import Header from "../../components/GatewayDetails/Header";
-import { THEMES } from "../../constants";
-import createTheme from "../../theme";
+import AppWrapper from "../../components/AppWrapper";
 
 describe("Gateway Details Header", () => {
   test("renders Gateway Details Header", () => {
     render(
-      <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
+      <AppWrapper>
         <Header />
-      </ThemeProvider>
+      </AppWrapper>
     );
 
     const createGatewayText = screen.getByText(/Create Device/i);
@@ -50,11 +48,11 @@ describe("Gateway Details Header", () => {
     };
 
     render(
-      <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
+      <AppWrapper>
         <Router history={history}>
           <Header gateway={gateway} />
         </Router>
-      </ThemeProvider>
+      </AppWrapper>
     );
 
     const createGatewayButton = screen.getByRole("button", {

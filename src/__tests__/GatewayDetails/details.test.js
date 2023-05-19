@@ -7,13 +7,9 @@ import {
   within,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
-import { Provider } from "react-redux";
 
 import Details from "../../components/GatewayDetails/Details";
-import { THEMES } from "../../constants";
-import createTheme from "../../theme";
-import store from "../../redux/store/index";
+import AppWrapper from "../../components/AppWrapper";
 
 describe("Gateway Details Details render", () => {
   test("renders Gateway Details Details", async () => {
@@ -38,11 +34,9 @@ describe("Gateway Details Details render", () => {
     };
 
     render(
-      <Provider store={store}>
-        <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-          <Details gateway={gateway} />
-        </ThemeProvider>
-      </Provider>
+      <AppWrapper>
+        <Details gateway={gateway} />
+      </AppWrapper>
     );
 
     const serialNumberCell = screen.getByRole("heading", {

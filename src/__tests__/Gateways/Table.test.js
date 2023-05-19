@@ -7,24 +7,18 @@ import {
   within,
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
-import { Provider } from "react-redux";
 
 import Table from "../../components/Gateway/Table";
-import { THEMES } from "../../constants";
-import createTheme from "../../theme";
-import store from "../../redux/store/index";
+import AppWrapper from "../../components/AppWrapper";
 
 describe("Gateway Table render", () => {
   test("renders Gateway Table", async () => {
     render(
-      <Provider store={store}>
-        <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-          <Table />
-        </ThemeProvider>
-      </Provider>
+      <AppWrapper>
+        <Table />
+      </AppWrapper>
     );
 
     const serialNumberCell = screen.getByText("Serial Number");
@@ -52,13 +46,11 @@ describe("Gateway Table render", () => {
     const history = createMemoryHistory();
 
     render(
-      <Provider store={store}>
-        <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-          <Router history={history}>
-            <Table />
-          </Router>
-        </ThemeProvider>
-      </Provider>
+      <AppWrapper>
+        <Router history={history}>
+          <Table />
+        </Router>
+      </AppWrapper>
     );
 
     await waitFor(async () => {

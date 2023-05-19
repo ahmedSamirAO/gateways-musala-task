@@ -1,28 +1,17 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
-import { createMemoryHistory } from "history";
-import { Router } from "react-router-dom";
-import { Provider } from "react-redux";
+import { act } from "react-dom/test-utils";
 
 import CreateGateway from "../pages/CreateGateway";
-import { THEMES } from "../constants";
-import createTheme from "../theme";
-import store from "../redux/store/index";
-import { HelmetProvider } from "react-helmet-async";
-import { act } from "react-dom/test-utils";
+import AppWrapper from "../components/AppWrapper";
 
 describe("CreateGateway tests", () => {
   test("renders CreateGateway", () => {
     render(
-      <Provider store={store}>
-        <HelmetProvider>
-          <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-            <CreateGateway />
-          </ThemeProvider>
-        </HelmetProvider>
-      </Provider>
+      <AppWrapper>
+        <CreateGateway />
+      </AppWrapper>
     );
 
     const nameField = screen.getByText("Name");
@@ -37,13 +26,9 @@ describe("CreateGateway tests", () => {
 
   test("change fields text", async () => {
     render(
-      <Provider store={store}>
-        <HelmetProvider>
-          <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
-            <CreateGateway />
-          </ThemeProvider>
-        </HelmetProvider>
-      </Provider>
+      <AppWrapper>
+        <CreateGateway />
+      </AppWrapper>
     );
 
     const nameField = screen.getByRole("textbox", { name: "Name" });

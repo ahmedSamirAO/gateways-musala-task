@@ -1,20 +1,18 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { ThemeProvider } from "styled-components/macro";
 import { createMemoryHistory } from "history";
 import { Router } from "react-router-dom";
 
 import Header from "../../components/Gateway/Header";
-import { THEMES } from "../../constants";
-import createTheme from "../../theme";
+import AppWrapper from "../../components/AppWrapper";
 
 describe("Gateway Header", () => {
   test("renders Gateway Header", () => {
     render(
-      <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
+      <AppWrapper>
         <Header />
-      </ThemeProvider>
+      </AppWrapper>
     );
 
     const createGatewayText = screen.getByText(/Create Gateway/i);
@@ -30,11 +28,11 @@ describe("Gateway Header", () => {
     const history = createMemoryHistory();
 
     render(
-      <ThemeProvider theme={createTheme(THEMES.DEFAULT)}>
+      <AppWrapper>
         <Router history={history}>
           <Header />
         </Router>
-      </ThemeProvider>
+      </AppWrapper>
     );
 
     const createGatewayButton = screen.getByRole("button", {
